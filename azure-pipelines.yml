@@ -1,5 +1,9 @@
 trigger:
-- main
+branches:
+  include:
+    - main
+    - release/*
+    - azure-pipelines-trial1
 
 variables:
   azureSubscription: 'azuredevops_to_azurewebapps'
