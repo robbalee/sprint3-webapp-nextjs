@@ -1,6 +1,10 @@
 trigger:
 - main
 
+variables:
+  azureSubscription: 'azuredevops_to_azurewebapps'
+  webAppName: 'sprint3-webapp-nextjs'
+
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -21,6 +25,14 @@ steps:
     repository: 'sprint3-webapp-nextjs'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
-    tags: 'latest'
+    tags: |
+      latest
+      $(Build.BuildId)
   displayName: 'Build and push Docker image'
-  
+
+- task: AzureWebAppContainer@1
+  inputs:
+    azureSubscription: '$(azureSubscription)'
+    appName: '$(azure-webgl)'
+    containers: 'robbalecontainerregistry.azurecr.io/sprint3-webapp-nextjs:$(Build.BuildId)'
+  displayName: 'Deploy to Azure Web App'
