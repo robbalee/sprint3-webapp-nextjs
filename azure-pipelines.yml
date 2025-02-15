@@ -7,10 +7,10 @@ trigger:
 
 variables:
   azureSubscription: 'azuredevops_to_azurewebapps'
-  webAppName: 'sprint3-webapp-nextjs'
+  webAppName: 'azure-webgl'
 
 pool:
-  vmImage: 'ubuntu-latest'
+s  vmImage: 'ubuntu-latest'
 
 steps:
 - task: NodeTool@0
@@ -37,6 +37,6 @@ steps:
 - task: AzureWebAppContainer@1
   inputs:
     azureSubscription: '$(azureSubscription)'
-    appName: '$(azure-webgl)'
+    appName: '$(webAppName)'
     containers: 'robbalecontainerregistry.azurecr.io/sprint3-webapp-nextjs:$(Build.BuildId)'
   displayName: 'Deploy to Azure Web App'
