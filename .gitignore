@@ -43,18 +43,13 @@ next-env.d.ts
 .github/workflows/test.yml
 
 # Terraform files that should not be committed
-./infra/.terraform/*
-!./infra/.terraform/modules
-./infra/terraform.lock.hcl
+/infra/.terraform/*
+!/infra/.terraform/modules
+/infra/terraform.lock.hcl
 
 # Crash log files
 crash.log
 
-# Ignore override files as they are machine-specific
-./infra/override.tf
-./infra/override.tf.json
-./infra/*_override.tf
-./infra/*_override.tf.json
 
 # Include any files with credentials
 *credentials*
